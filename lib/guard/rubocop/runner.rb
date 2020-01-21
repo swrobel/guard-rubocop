@@ -26,7 +26,10 @@ module Guard
       end
 
       def build_command(paths)
-        command = ['rubocop']
+        command = []
+
+        executable = @options[:executable] || 'rubocop'
+        command << executable
 
         if should_add_default_formatter_for_console?
           command.concat(%w[--format progress]) # Keep default formatter for console.
